@@ -2,7 +2,7 @@ package dev.vknrk.app
 
 import dev.vknrk.utils.swap
 
-data class RubickLikeBoardFieldArrayFactory(
+data class RubikLikeBoardFieldArrayFactory(
     val randomStepsCount: Int = 200
 ) : BoardFieldArrayFactory {
     override fun create(width: Int, height: Int): IntArray {

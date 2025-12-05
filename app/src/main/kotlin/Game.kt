@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 data class Game(val board: Board, val inputProvider: InputProvider) {
     private var title = "Fifteen Puzzle"
     private val started = false
-    private var footer = "Use W/A/S/D to move tiles, Q to quit."
+    private var footer = "Use W/A/S/D to move tiles, Q to quit. R/N to navigate history."
 
     sealed interface GameChangeEvent {
         data class GameStarted(val game: Game) : GameChangeEvent
@@ -34,6 +34,7 @@ data class Game(val board: Board, val inputProvider: InputProvider) {
                 Input.LEFT -> makeBoardMove(Board.MoveDirection.LEFT)
                 Input.RIGHT -> makeBoardMove(Board.MoveDirection.RIGHT)
                 Input.QUIT -> quitGame()
+                else -> Unit
             }
         }
     }

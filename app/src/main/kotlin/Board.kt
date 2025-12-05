@@ -11,7 +11,7 @@ data class Board(
     }
 
 
-    private val cells: IntArray = (fieldInitializer ?: RubickLikeBoardFieldArrayFactory()).create(width, height).also {
+    private val cells: IntArray = (fieldInitializer ?: RubikLikeBoardFieldArrayFactory()).create(width, height).also {
         require(it.size == width * height) { "Field initializer returned array of invalid size." }
     }
 
