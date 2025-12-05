@@ -4,6 +4,7 @@ import dev.vknrk.app.Board
 import dev.vknrk.app.BoardFieldArrayFactory
 import dev.vknrk.app.Game
 import dev.vknrk.app.input.InputProvider
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.consumeAsFlow
@@ -35,6 +36,7 @@ class ConsoleGameRendererTest {
 
     private class MockInputProvider : InputProvider {
         override val inputFlow = MutableSharedFlow<InputProvider.Input>()
+        override suspend fun startReadingInput(): Job = Job()
     }
 
     @Test

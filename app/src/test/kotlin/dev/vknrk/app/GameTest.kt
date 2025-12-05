@@ -2,6 +2,7 @@ package dev.vknrk.app
 
 import dev.vknrk.app.input.InputProvider
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +19,9 @@ class GameTest {
 
     private class MockInputProvider(
         override val inputFlow: Flow<InputProvider.Input>
-    ) : InputProvider
+    ) : InputProvider {
+        override suspend fun startReadingInput(): Job = Job()
+    }
 
     private class SolvedBoardFactory : BoardFieldArrayFactory {
         override fun create(width: Int, height: Int): IntArray {
